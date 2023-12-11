@@ -8,10 +8,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
-
+ /*
+  * https://www.tutorialspoint.com/pg/jpa/jpa_advanced_mappings.htm
+  * Single_table -> cria uma unica tabela para todas as classes da herança
+  * Joined -> cria uma junção de registro em tabelas diferentes
+  * TABLE_PER_CLASS -> cria uma tabela para cada classe e os registros independentes
+  * */
 @Entity
 @Table
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "type")
 public class Staff {
 	@Id

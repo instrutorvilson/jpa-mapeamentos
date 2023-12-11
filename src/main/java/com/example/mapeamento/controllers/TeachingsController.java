@@ -15,21 +15,31 @@ import com.example.mapeamento.repository.TeachingStaffRepository;
 
 @RestController
 public class TeachingsController {
-  
+
 	@Autowired
 	TeachingStaffRepository repo;
-	
+
 	@PostMapping("/teachings")
-	public ResponseEntity<TeachingsStaff> salvar(@RequestBody TeachingsStaff teachingsStaff){
+	public ResponseEntity<TeachingsStaff> salvar(@RequestBody TeachingsStaff teachingsStaff) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(teachingsStaff));
 	}
-	
+	/*
+	 * Passar no body do postmans
+	 * { "qualification":"Instrutor", "sname": "João", "subjectexpertise":"Backend" }
+	 * 
+	 */
+
 	@Autowired
 	NonTecahingsStaffRepository nrepo;
-	
+
 	@PostMapping("/nonteachings")
-	public ResponseEntity<NonTeachingStaff> salvar(@RequestBody NonTeachingStaff nonTeachingStaff){
+	public ResponseEntity<NonTeachingStaff> salvar(@RequestBody NonTeachingStaff nonTeachingStaff) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(nrepo.save(nonTeachingStaff));
 	}
-	
+	/*
+	 * Passar no body do postmans
+	 * { "sname": "João", "areaexpertise":"Backend" }
+	 * 
+	 */
+
 }
